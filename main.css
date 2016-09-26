@@ -1,3 +1,26 @@
-#map{
-  height: 400px;
+#map {
+    height: 400px;
+}
+
+.game {
+    border: 1px solid grey;
+    text-align: center;
+}
+
+input {
+    display: inline-block !important;
+    margin-bottom: 20px;
+}
+
+#showCity, #showResult, .red, .blue, input{
+    text-align: center;
+}
+.blue {
+    color: blue;
+}
+.red {
+    color: red;
+}
+.green {
+    color: green;
 }

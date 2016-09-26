@@ -3,60 +3,69 @@
     "Prenom": "Anne-Claire",
     "age": 29,
     "sexe" : "F",
-    "ville": "579 avenue de la bécasse, 40150, Soorts-Hossegor"
+    "address": "579 avenue de la bécasse, 40150, Soorts-Hossegor",
+    "city": "Soorts-Hossegor"
 },{
     "nom": "Huc",
     "Prenom": "Vivien",
     "age": 18,
     "sexe" : "M",
-    "ville": "33185, Le Haillan"
+    "address": "33185, Le Haillan",
+    "city": "Le Haillan"
 }, {
     "nom": "de Barthez",
     "Prenom": "Paul",
     "age": 22,
     "sexe" : "M",
-    "ville" : "72 rue Henri IV, 33000, Bordeaux"
+    "address" : "72 rue Henri IV, 33000, Bordeaux",
+    "city": "Bordeaux"
 },  {
     "nom": "Muat",
     "Prenom": "Karl",
     "age": 35,
     "sexe" : "M",
-    "ville" : "81 rue de rivière, 33000, Bordeaux"
+    "address" : "81 rue de rivière, 33000, Bordeaux",
+    "city": "Bordeaux"
 }, {
     "nom": "Bordais",
     "Prenom": "Alexis",
     "age": 34,
     "sexe" : "M",
-    "ville" : "18 rue Jean Paul Alaux, 33100, Bordeaux"
+    "address" : "18 rue Jean Paul Alaux, 33100, Bordeaux",
+    "city": "Bordeaux"
 }, {
     "nom": "Murgues",
     "Prenom": "Nans",
     "age": 25,
     "sexe" : "M",
-    "ville" : "20270, Santo-Pietro-di-Tenda"
+    "address" : "20270, Santo-Pietro-di-Tenda",
+    "city": "Santo-Pietro-di-Tenda"
 }, {
     "nom": "Palacin",
     "Prenom": "Sébastien",
     "age": 27,
     "sexe" : "M",
-    "ville" : "36 rue des Tourneurs, 31000, Toulouse"
+    "address" : "36 rue des Tourneurs, 31000, Toulouse",
+    "city": "Toulouse"
 }, {
     "nom": "Cisse",
     "Prenom": "Ousmane",
     "age": 34,
     "sexe" : "M",
-    "ville" : "44000, Nantes"
+    "address" : "44000, Nantes",
+    "city": "Nantes"
 }, {
     "nom": "Gomez",
     "Prenom": "Tony",
     "age": 30,
     "sexe" : "M",
-    "ville" : "33140, Villenave d'Ornon"
+    "address" : "33140, Villenave d'Ornon",
+    "city": "Villenave d'Ornon"
 }, {
     "nom": "Alary",
     "Prenom": "Audrey",
     "age": 23,
     "sexe" : "F",
-    "ville" : "21 rue rode, 33000, Bordeaux"
-
+    "address" : "21 rue rode, 33000, Bordeaux",
+    "city": "Bordeaux"
 }]

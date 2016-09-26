@@ -4,27 +4,53 @@
         <meta charset="utf-8">
         <title></title>
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="http://yegor256.github.io/tacit/tacit.min.css"/>
     </head>
     <body>
         <div id="totalStudent"></div>
-        <br/>
+        <hr />
         <div id="middleAge"></div>
-        <br/>
+        <hr/>
         <div id="longuestName"></div>
-        <br/>
+        <hr/>
         <div id="parity"></div>
+        <hr/>
+        <center class="game">
+            <div id="weatherGame"> </div>
+            <strong>Let's play a game ! <br />Guess the temperature in the city of one of our Student</strong>
+            <br/><br/>
+            <button id="generateCity">Gimme a city !</button>
+            <div id="showCity"></div>
+            <input placeholder="Enter a temp" id="inputTemp"/>
+            <br/>
+            <button id="checkTemp">Submit my temp</button>
+            <div id="showResult"></div>
+        </center>
         <br/>
+        <table>
+            Liste des Élèves de la Promo par ordre d'âge dans un tableau :
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody id="table"></tbody>
+        </table>
+        <hr />
         <div id="longuestName"></div>
         Liste des Élèves de la Promo par ordre Alphabétique :
         <div id="alphabeticOrder"></div>
-        <br/>
+        <hr/>
         Liste des Élèves de la Promo par ordre d'âge :
         <div id="ageOrder"></div>
-        <br/>
+        <hr/>
         Geocoding :
         <div id="map"></div>
-        <br/>
+        <hr/>
     </body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx5FDqSbdMpU6pOR6B8hTide4bKWY-Fn4&signed_in=true"></script>
     <script src="promotion.js"></script>
     <script src="app.js"></script>
