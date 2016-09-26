@@ -4,68 +4,78 @@
     "age": 29,
     "sexe" : "F",
     "address": "579 avenue de la bécasse, 40150, Soorts-Hossegor",
-    "city": "Soorts-Hossegor"
+    "city": "Soorts-Hossegor",
+    "github": "annclair"
 },{
     "nom": "Huc",
     "Prenom": "Vivien",
     "age": 18,
     "sexe" : "M",
     "address": "33185, Le Haillan",
-    "city": "Le Haillan"
+    "city": "Le Haillan",
+    "github": "Bully47"
 }, {
     "nom": "de Barthez",
     "Prenom": "Paul",
     "age": 22,
     "sexe" : "M",
     "address" : "72 rue Henri IV, 33000, Bordeaux",
-    "city": "Bordeaux"
+    "city": "Bordeaux",
+    "github": "uxpaul"
 },  {
     "nom": "Muat",
     "Prenom": "Karl",
     "age": 35,
     "sexe" : "M",
     "address" : "81 rue de rivière, 33000, Bordeaux",
-    "city": "Bordeaux"
+    "city": "Bordeaux",
+    "github": "krm22"
 }, {
     "nom": "Bordais",
     "Prenom": "Alexis",
     "age": 34,
     "sexe" : "M",
     "address" : "18 rue Jean Paul Alaux, 33100, Bordeaux",
-    "city": "Bordeaux"
+    "city": "Bordeaux",
+    "github": "AlexisBordais"
 }, {
-    "nom": "Murgues",
+    "nom": "Mourgues",
     "Prenom": "Nans",
     "age": 25,
     "sexe" : "M",
     "address" : "20270, Santo-Pietro-di-Tenda",
-    "city": "Santo-Pietro-di-Tenda"
+    "city": "Santo-Pietro-di-Tenda",
+    "github": "Nebbiu"
 }, {
     "nom": "Palacin",
     "Prenom": "Sébastien",
     "age": 27,
     "sexe" : "M",
     "address" : "36 rue des Tourneurs, 31000, Toulouse",
-    "city": "Toulouse"
+    "city": "Toulouse",
+    "github": "sbstnplcn"
 }, {
     "nom": "Cisse",
     "Prenom": "Ousmane",
     "age": 34,
     "sexe" : "M",
     "address" : "44000, Nantes",
-    "city": "Nantes"
+    "city": "Nantes",
+    "github": "oussou-dev"
 }, {
     "nom": "Gomez",
     "Prenom": "Tony",
     "age": 30,
     "sexe" : "M",
     "address" : "33140, Villenave d'Ornon",
-    "city": "Villenave d'Ornon"
+    "city": "Villenave d'Ornon",
+    "github": "llTonyll"
 }, {
     "nom": "Alary",
     "Prenom": "Audrey",
     "age": 23,
     "sexe" : "F",
     "address" : "21 rue rode, 33000, Bordeaux",
-    "city": "Bordeaux"
+    "city": "Bordeaux",
+    "github": "audreyalary"
 }]

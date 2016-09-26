@@ -20,7 +20,11 @@
 
                 document.getElementById('alphabeticOrder').innerHTML = promotion.getByAlphabeticOrder()
                 document.getElementById('ageOrder').innerHTML = promotion.getByAgeOrder()
-                document.getElementById('map').innerHTML = promotion.getStudentByGeocoding()
+                for (let i = 0; i< students.length; i++){
+                    promotion.getGithubAvatar(i)
+                }
+
+                //document.getElementById('map').innerHTML = promotion.getStudentByGeocoding()
 
 
 

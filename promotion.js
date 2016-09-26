@@ -141,10 +141,12 @@ class Promotion {
             })
             document.querySelector("#checkTemp").onclick = function() {
                 let inputTemp = document.querySelector('#inputTemp').value
-                if (inputTemp < temperature) {
-                    document.querySelector("#showResult").innerHTML = '<p class="blue">Too Cold !</p>'
+                if (isNaN(inputTemp)) {
+                    document.querySelector("#showResult").innerHTML = '<p>Please enter a number</p>'
                 } else if (inputTemp > temperature) {
                     document.querySelector("#showResult").innerHTML = '<p class="red">Too Hot !</p>'
+                } else if (inputTemp < temperature) {
+                    document.querySelector("#showResult").innerHTML = '<p class="red">Too Cold !</p>'
                 } else {
                     document.querySelector("#showResult").innerHTML = '<strong class="green">Well Done !</strong>'
                 }
@@ -166,12 +168,23 @@ class Promotion {
         for (let i = 0; i < this.students.length; i++) {
             let tr = document.createElement('tr')
             tr.innerHTML += `
+                    <td id="gravatar"></td>
                     <td>${this.students[i].nom}</td>
                     <td>${this.students[i].Prenom}</td>
-                    <td>${this.students[i].age}</td>`
+                    <td>${this.students[i].age}</td>
+                    <td>${this.students[i].city}</td>
+                    <td></td>
+                    <td><a href=https://github.com/${this.students[i].github} target="_blank">@${this.students[i].github}</a></td>`
 
             rows.push(tr)
         }
         return rows
     }
+    getGithubAvatar(i) {
+        $.getJSON(`http://api.github.com/users/${this.students[i].github}`, function(json) {
+            let icon = json.avatar_url
+            document.querySelector("#gravatar").innerHTML = '<img src=' + icon + '>'
+        })
+    }
+
 }

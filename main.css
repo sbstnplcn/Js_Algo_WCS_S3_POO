@@ -12,7 +12,7 @@ input {
     margin-bottom: 20px;
 }
 
-#showCity, #showResult, .red, .blue, input{
+#showCity, #showResult, .red, .blue, input, p{
     text-align: center;
 }
 .blue {
@@ -23,4 +23,8 @@ input {
 }
 .green {
     color: green;
+}
+#gravatar img{
+    width: 40px;
+    height: auto;
 }
