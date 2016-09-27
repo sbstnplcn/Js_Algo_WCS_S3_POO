@@ -164,19 +164,28 @@ class Promotion {
                 return 0
             }
         })
-        let rows = []
-        for (let i = 0; i < this.students.length; i++) {
-            let tr = document.createElement('tr')
-            tr.innerHTML += `
-                    <td id="gravatar"></td>
-                    <td>${this.students[i].nom}</td>
-                    <td>${this.students[i].Prenom}</td>
-                    <td>${this.students[i].age}</td>
-                    <td>${this.students[i].city}</td>
-                    <td></td>
-                    <td><a href=https://github.com/${this.students[i].github} target="_blank">@${this.students[i].github}</a></td>`
 
-            rows.push(tr)
+        let rows = []
+        let icon
+        let student = this.students
+
+        for (let i = 0; i < student.length; i++) {
+            function createTable() {
+                let tr = document.createElement('tr')
+                tr.innerHTML += `
+                        <td>${icon}</td>
+                        <td>${student[i].nom}</td>
+                        <td>${student[i].Prenom}</td>
+                        <td>${student[i].age}</td>
+                        <td>${student[i].city}</td>
+                        <td id="editEmail"></td>
+                        <td><a href="https://github.com/${student[i].github}" target="_blank">@${student[i].github}</a></td>`
+                rows.push(tr)
+            }
+            // $.getJSON('http://api.github.com/users/' + this.students[i].github, function(json) {
+            //     icon = `<img src="${json.avatar_url}">`
+                createTable()
+            // })
         }
         return rows
     }

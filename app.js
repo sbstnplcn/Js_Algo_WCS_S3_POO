@@ -17,12 +17,8 @@
                 promotion.getByAgeOrderTable().map((tr) => {
                     document.getElementById('table').appendChild(tr)
                 })
-
                 document.getElementById('alphabeticOrder').innerHTML = promotion.getByAlphabeticOrder()
                 document.getElementById('ageOrder').innerHTML = promotion.getByAgeOrder()
-                for (let i = 0; i< students.length; i++){
-                    promotion.getGithubAvatar(i)
-                }
 
                 //document.getElementById('map').innerHTML = promotion.getStudentByGeocoding()
 

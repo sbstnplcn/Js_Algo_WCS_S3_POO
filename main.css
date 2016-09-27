@@ -27,4 +27,5 @@ input {
 #gravatar img{
     width: 40px;
     height: auto;
+    border-radius: 100%;
 }
