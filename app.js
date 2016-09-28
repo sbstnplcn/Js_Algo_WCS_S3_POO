@@ -14,13 +14,10 @@
                 document.getElementById('longuestName').innerHTML = 'Le nom le plus long est : ' + promotion.getLongestName()
                 document.getElementById('parity').innerHTML = 'La parité est de ' + promotion.getParity()
                 promotion.getWeatherGame()
-                promotion.getByAgeOrderTable().map((tr) => {
-                    document.getElementById('table').appendChild(tr)
-                })
+                promotion.getByAgeOrderTable(document.getElementById('table'))
                 document.getElementById('alphabeticOrder').innerHTML = promotion.getByAlphabeticOrder()
                 document.getElementById('ageOrder').innerHTML = promotion.getByAgeOrder()
-
-                //document.getElementById('map').innerHTML = promotion.getStudentByGeocoding()
+                promotion.getStudentByGeocoding()
 
 
 

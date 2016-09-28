@@ -78,55 +78,6 @@ class Promotion {
         return list
     }
 
-    getStudentByGeocoding() {
-        let map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 5,
-            center: new google.maps.LatLng(45, 2.6)
-        });
-        let geocoder = new google.maps.Geocoder();
-        geocodeAddress(geocoder, map);
-        let address
-        let contentString
-
-        function getWeather(student, marker) {
-            $.getJSON(`${ 'http://api.openweathermap.org/data/2.5/weather?q='}${student.city}${ '&appid=39d104ba804c4dba1133789f92fe239f'}`, function(json) {
-                let main = `The Weather in ${student.city} : <br><div style="text-transform : capitalize;">${json.weather[0].description}</div>`
-                let temperature = `The temperature is : ${ (json.main.temp - 273.15).toFixed(1)}°C`
-                let icon = `${ 'http://openweathermap.org/img/w/'}${json.weather[0].icon}${ '.png'}`
-                contentString = `<h5>${student.Prenom} ${student.nom}</h5>
-                <div id="infoWeather">
-                <br>
-                <div class="col s9">${main}<br>${temperature}</div>
-                <div class="col s3"><img src='${icon}'></div>
-                </div>`
-                let infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                })
-                marker.addListener('click', function() {
-                    infowindow.open(map, marker)
-                })
-            })
-        }
-
-
-        function geocodeAddress(geocoder, resultsMap) {
-            //$.getJSON("students.json", function(json) {
-            json.forEach(function(val) {
-                    geocoder.geocode({
-                        'address': val.address
-                    }, function(results) {
-                        resultsMap.setCenter(results[0].geometry.location)
-                        let marker = new google.maps.Marker({
-                            map: resultsMap,
-                            position: results[0].geometry.location
-                        })
-                        getWeather(val, marker)
-                    })
-                })
-                //})
-        }
-    }
-
     getWeatherGame() {
         let randomNumber = 0
         let student = this.students
@@ -154,7 +105,7 @@ class Promotion {
         }
     }
 
-    getByAgeOrderTable() {
+    getByAgeOrderTable(table) {
         let ageOrder = this.students.sort(function(currName, nextName) {
             if (currName.age > nextName.age) {
                 return 1
@@ -167,33 +118,83 @@ class Promotion {
 
         let rows = []
         let icon
-        let student = this.students
+        let meteo
 
-        for (let i = 0; i < student.length; i++) {
-            function createTable() {
-                let tr = document.createElement('tr')
-                tr.innerHTML += `
-                        <td>${icon}</td>
-                        <td>${student[i].nom}</td>
-                        <td>${student[i].Prenom}</td>
-                        <td>${student[i].age}</td>
-                        <td>${student[i].city}</td>
-                        <td id="editEmail"></td>
-                        <td><a href="https://github.com/${student[i].github}" target="_blank">@${student[i].github}</a></td>`
-                rows.push(tr)
+        this.students.map(function(student) {
+            let getMeteo = $.getJSON(`http://api.openweathermap.org/data/2.5/weather?q=${student.city}&appid=39d104ba804c4dba1133789f92fe239f`,
+                (json) => {
+                    meteo = `<img src="${ 'http://openweathermap.org/img/w/'}${json.weather[0].icon}${ '.png'}">`
+                })
+            $.when(getMeteo).done(function() {
+                getIcon(meteo)
+            })
+
+            function getIcon(meteo) {
+                $.getJSON('http://api.github.com/users/' + student.github, (json) => {
+                    icon = `<img src="${json.avatar_url}">`
+                    let tr = document.createElement('tr')
+                    tr.innerHTML += `
+                                    <td id="gravatar">${icon}</td>
+                                    <td>${student.nom}</td>
+                                    <td>${student.Prenom}</td>
+                                    <td>${student.age}</td>
+                                    <td>${student.city}</td>
+                                    <td>${meteo}</td>
+                                    <td id="editEmail"></td>
+                                    <td><a href="https://github.com/${student.github}" target="_blank">@${student.github}</a></td>`
+                    table.appendChild(tr)
+                })
             }
-            // $.getJSON('http://api.github.com/users/' + this.students[i].github, function(json) {
-            //     icon = `<img src="${json.avatar_url}">`
-                createTable()
-            // })
-        }
-        return rows
-    }
-    getGithubAvatar(i) {
-        $.getJSON(`http://api.github.com/users/${this.students[i].github}`, function(json) {
-            let icon = json.avatar_url
-            document.querySelector("#gravatar").innerHTML = '<img src=' + icon + '>'
         })
     }
 
+
+    getStudentByGeocoding() {
+        let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 5,
+            center: new google.maps.LatLng(45, 2.6)
+        });
+        let geocoder = new google.maps.Geocoder();
+        geocodeAddress(geocoder, map);
+        let address
+        let contentString
+
+        function getWeather(student, marker) {
+            $.getJSON(`${ 'http://api.openweathermap.org/data/2.5/weather?q='}${student.city}${ '&appid=39d104ba804c4dba1133789f92fe239f'}`,
+                function(json) {
+                    let main = `The Weather in ${student.city} : <span style="text-transform : capitalize;">${json.weather[0].description}</span>`
+                    let temperature = `The temperature is : ${ (json.main.temp - 273.15).toFixed(1)}°C`
+                    let icon = `${ 'http://openweathermap.org/img/w/'}${json.weather[0].icon}${ '.png'}`
+                    contentString = `<h5>${student.Prenom} ${student.nom}</h5>
+                <div id="infoWeather">
+                <br>
+                <div>${main}<br>${temperature}</div>
+                <div><img src="${icon}"></div>
+                </div>`
+                    let infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    })
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker)
+                    })
+                })
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            $.getJSON("students.json", function(json) {
+                json.forEach(function(val) {
+                    geocoder.geocode({
+                        'address': val.address
+                    }, function(results) {
+                        resultsMap.setCenter(results[0].geometry.location)
+                        let marker = new google.maps.Marker({
+                            map: resultsMap,
+                            position: results[0].geometry.location
+                        })
+                        getWeather(val, marker)
+                    })
+                })
+            })
+        }
+    }
 }
