@@ -125,15 +125,16 @@ class Promotion {
                 (json) => {
                     meteo = `<img src="${ 'http://openweathermap.org/img/w/'}${json.weather[0].icon}${ '.png'}">`
                 })
-            $.when(getMeteo).done(function() {
-                getIcon(meteo)
-            })
+                $.when(getMeteo).done(function() {
+                    getIconGithub(meteo)
+                })
 
-            function getIcon(meteo) {
-                $.getJSON('http://api.github.com/users/' + student.github, (json) => {
-                    icon = `<img src="${json.avatar_url}">`
-                    let tr = document.createElement('tr')
-                    tr.innerHTML += `
+            function getIconGithub(meteo) {
+                $.getJSON('http://api.github.com/users/' + student.github,
+                    (json) => {
+                        icon = `<img src="${json.avatar_url}">`
+                        let tr = document.createElement('tr')
+                        tr.innerHTML += `
                                     <td id="gravatar">${icon}</td>
                                     <td>${student.nom}</td>
                                     <td>${student.Prenom}</td>
@@ -142,8 +143,8 @@ class Promotion {
                                     <td>${meteo}</td>
                                     <td id="editEmail"></td>
                                     <td><a href="https://github.com/${student.github}" target="_blank">@${student.github}</a></td>`
-                    table.appendChild(tr)
-                })
+                        table.appendChild(tr)
+                    })
             }
         })
     }
@@ -160,10 +161,10 @@ class Promotion {
         let contentString
 
         function getWeather(student, marker) {
-            $.getJSON(`${ 'http://api.openweathermap.org/data/2.5/weather?q='}${student.city}${ '&appid=39d104ba804c4dba1133789f92fe239f'}`,
+            $.getJSON(`${ 'http://api.openweathermap.org/data/2.5/weather?q='}${student.city}${ '&appid=39d104ba804c4dba1133789f92fe239f&units=metric'}`,
                 function(json) {
                     let main = `The Weather in ${student.city} : <span style="text-transform : capitalize;">${json.weather[0].description}</span>`
-                    let temperature = `The temperature is : ${ (json.main.temp - 273.15).toFixed(1)}°C`
+                    let temperature = `The temperature is : ${ (json.main.temp).toFixed(1)}°C`
                     let icon = `${ 'http://openweathermap.org/img/w/'}${json.weather[0].icon}${ '.png'}`
                     contentString = `<h5>${student.Prenom} ${student.nom}</h5>
                 <div id="infoWeather">
